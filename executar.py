@@ -126,7 +126,6 @@ def executar_caso(n, r, k, host, porta, pasta_saida):
 
     clientes = []
     try:
-        # Popen é chamado sequencialmente sem sleep entre os inícios.
         for pid in range(1, n + 1):
             clientes.append(subprocess.Popen([
                 sys.executable, str(PROCESSO),

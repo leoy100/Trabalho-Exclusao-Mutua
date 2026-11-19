@@ -1,4 +1,4 @@
-"""Formato simples de mensagens usado por coordenador.py e processo.py."""
+"""Formato de mensagens usado por coordenador.py e processo.py."""
 
 F = 32
 
@@ -18,7 +18,7 @@ class ErroProtocolo(ValueError):
 
 
 def criar_mensagem(tipo, identificador_processo):
-    """Cria um quadro ASCII de exatamente F bytes, com preenchimento em zeros."""
+    """Cria um quadro ASCII de 32 bytes, com preenchimento em zeros."""
     if tipo not in NOMES:
         raise ErroProtocolo(f"Tipo de mensagem inválido: {tipo}")
     if not isinstance(identificador_processo, int) or identificador_processo < 1:
@@ -31,7 +31,7 @@ def criar_mensagem(tipo, identificador_processo):
 
 
 def receber_mensagem(sock):
-    """Lê exatamente F bytes de um socket TCP e retorna (tipo, id), ou None no EOF."""
+    """Lê exatamente 32 bytes de um socket TCP e retorna (tipo, id), ou None no EOF."""
     quadro = bytearray()
     while len(quadro) < F:
         parte = sock.recv(F - len(quadro))

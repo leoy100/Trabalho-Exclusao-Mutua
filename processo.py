@@ -26,7 +26,6 @@ def executar(identificador, repeticoes, espera, host, porta, arquivo_resultado):
                     f"Esperava GRANT para o processo {identificador}; recebeu tipo={tipo}, processo={pid}."
                 )
 
-            # A escrita e a espera fazem parte da região crítica. RELEASE só é enviado depois.
             instante = datetime.now().astimezone().isoformat(timespec="milliseconds")
             with open(arquivo_resultado, "a", encoding="utf-8", newline="") as resultado:
                 resultado.write(f"{identificador};{instante}\n")
